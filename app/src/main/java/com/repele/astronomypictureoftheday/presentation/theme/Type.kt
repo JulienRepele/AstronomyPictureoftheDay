@@ -1,4 +1,4 @@
-package com.repele.astronomypictureoftheday.ui.theme
+package com.repele.astronomypictureoftheday.presentation.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

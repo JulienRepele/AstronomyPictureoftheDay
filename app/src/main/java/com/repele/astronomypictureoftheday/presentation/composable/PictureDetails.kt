@@ -1,4 +1,4 @@
-package com.repele.astronomypictureoftheday.ui.composable
+package com.repele.astronomypictureoftheday.presentation.composable
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.Orientation.Vertical

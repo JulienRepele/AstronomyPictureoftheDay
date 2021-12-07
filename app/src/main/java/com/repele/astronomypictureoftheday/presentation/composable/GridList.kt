@@ -1,10 +1,9 @@
-package com.repele.astronomypictureoftheday.ui.composable
+package com.repele.astronomypictureoftheday.presentation.composable
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
@@ -15,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.repele.astronomypictureoftheday.data.MediaType
 import com.repele.astronomypictureoftheday.data.PictureOfTheDay
-import com.repele.astronomypictureoftheday.ui.PituresViewModel
+import com.repele.astronomypictureoftheday.presentation.PituresViewModel
 
 @Composable
 fun ScreenPictureOfTheDay(navController: NavController, pituresViewModel: PituresViewModel, contentPading: PaddingValues) {

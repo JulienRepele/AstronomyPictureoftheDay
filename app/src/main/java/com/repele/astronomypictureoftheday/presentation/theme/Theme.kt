@@ -1,4 +1,4 @@
-package com.repele.astronomypictureoftheday.ui.theme
+package com.repele.astronomypictureoftheday.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

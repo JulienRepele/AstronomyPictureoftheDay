@@ -1,8 +1,9 @@
-package com.repele.astronomypictureoftheday.ui
+package com.repele.astronomypictureoftheday.presentation
 
 import androidx.lifecycle.ViewModel
 import com.repele.astronomypictureoftheday.data.MediaType
 import com.repele.astronomypictureoftheday.data.PictureOfTheDay
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
