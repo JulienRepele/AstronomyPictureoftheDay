@@ -3,36 +3,36 @@ package com.repele.astronomypictureoftheday
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.activity.viewModels
+import androidx.compose.material.Scaffold
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.repele.astronomypictureoftheday.ui.PituresViewModel
+import com.repele.astronomypictureoftheday.ui.composable.PictureDetailsPreview
+import com.repele.astronomypictureoftheday.ui.composable.ScreenPictureOfTheDay
 import com.repele.astronomypictureoftheday.ui.theme.AstronomyPictureOfTheDayTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val pituresViewModel by viewModels<PituresViewModel>()
+
         setContent {
             AstronomyPictureOfTheDayTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
-                }
+                Scaffold(
+                    content = { contentPadding ->
+                        val navController = rememberNavController()
+                        NavHost(navController = navController, startDestination = "grid") {
+                            composable("grid") { ScreenPictureOfTheDay(navController, pituresViewModel, contentPadding) }
+                            composable("picture_details") { PictureDetailsPreview() }
+                        }
+                    }
+                )
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    AstronomyPictureOfTheDayTheme {
-        Greeting("Android")
     }
 }

@@ -32,7 +32,6 @@ fun PictureDetails(
     explanation: String? = null,
     copyright: String? = null,
 ) {
-
     Column(
         modifier = modifier.scrollable(
             state = rememberScrollState(),
