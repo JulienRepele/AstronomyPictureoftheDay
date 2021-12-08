@@ -4,7 +4,6 @@ import java.util.*
 import org.junit.Assert.*
 import org.junit.Test
 
-
 class DateParameterTest {
 
     private val referenceDateTimestamp = 1638995135676 // december 2021 the 8th
@@ -22,8 +21,8 @@ class DateParameterTest {
         val getEndDateParameter = dateRangeParameter.getEndDateParameter(pageIndex)
 
         // Then
-        assertEquals("2021-12-08", startDateParameter)
-        assertEquals("2021-11-29", getEndDateParameter)
+        assertEquals("2021-12-08", getEndDateParameter)
+        assertEquals("2021-11-29", startDateParameter)
     }
 
     @Test
@@ -37,8 +36,8 @@ class DateParameterTest {
         val getEndDateParameter = dateRangeParameter.getEndDateParameter(pageIndex)
 
         // Then
-        assertEquals("2021-11-28", startDateParameter)
-        assertEquals("2021-11-19", getEndDateParameter)
+        assertEquals("2021-11-28", getEndDateParameter)
+        assertEquals("2021-11-19", startDateParameter)
     }
 
     @Test
@@ -52,8 +51,8 @@ class DateParameterTest {
         val getEndDateParameter = dateRangeParameter.getEndDateParameter(pageIndex)
 
         // Then
-        assertEquals("2021-11-18", startDateParameter)
-        assertEquals("2021-11-09", getEndDateParameter)
+        assertEquals("2021-11-18", getEndDateParameter)
+        assertEquals("2021-11-09", startDateParameter)
     }
 
     @Test
@@ -67,7 +66,7 @@ class DateParameterTest {
         val getEndDateParameter = dateRangeParameter.getEndDateParameter(pageIndex)
 
         // Then
-        assertEquals("2020-11-23", startDateParameter)
-        assertEquals("2020-11-14", getEndDateParameter)
+        assertEquals("2020-11-23", getEndDateParameter)
+        assertEquals("2020-11-14", startDateParameter)
     }
 }

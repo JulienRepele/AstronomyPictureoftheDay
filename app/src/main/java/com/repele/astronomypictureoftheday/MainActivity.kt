@@ -19,7 +19,6 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val pituresViewModel by viewModels<PituresViewModel>()
 
         setContent {
             AstronomyPictureOfTheDayTheme {
@@ -27,7 +26,12 @@ class MainActivity : ComponentActivity() {
                     content = { contentPadding ->
                         val navController = rememberNavController()
                         NavHost(navController = navController, startDestination = "grid") {
-                            composable("grid") { ScreenPictureOfTheDay(navController, pituresViewModel, contentPadding) }
+                            composable("grid") {
+                                ScreenPictureOfTheDay(
+                                    navController = navController,
+                                    contentPading = contentPadding
+                                )
+                            }
                             composable("picture_details") { PictureDetailsPreview() }
                         }
                     }

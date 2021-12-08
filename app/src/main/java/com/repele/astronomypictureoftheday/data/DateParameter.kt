@@ -23,7 +23,7 @@ class DateParameter(
      * First page has the index 0
      */
     fun getStartDateParameter(pageIndex: Int): String {
-        return Date(referenceDate.time - DAY_IN_MS * numberOfElementsPerPage * pageIndex).toNasApiFormat()
+        return Date(referenceDate.time - DAY_IN_MS * ((pageIndex + 1) * numberOfElementsPerPage - 1)).toNasApiFormat()
     }
 
     /**
@@ -31,7 +31,7 @@ class DateParameter(
      * First page has the index 0
      */
     fun getEndDateParameter(pageIndex: Int): String {
-        return Date(referenceDate.time - DAY_IN_MS * ((pageIndex + 1) * numberOfElementsPerPage - 1)).toNasApiFormat()
+        return Date(referenceDate.time - DAY_IN_MS * numberOfElementsPerPage * pageIndex).toNasApiFormat()
     }
 
     @SuppressLint("SimpleDateFormat")

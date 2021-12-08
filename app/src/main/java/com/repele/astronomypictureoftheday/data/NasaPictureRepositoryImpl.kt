@@ -12,10 +12,14 @@ class NasaPictureRepositoryImpl @Inject constructor(
 ) : NasaPictureRepository {
 
     private val pictureList = emptyList<PictureOfTheDay>()
+    private val dateParameter = DateParameter()
 
     override suspend fun getPictureList(page: Int): List<PictureOfTheDay> {
         val response = try {
-            api.getPicturesList("", "").map { it.toPictureOfTheDay() }
+            api.getPicturesList(
+                dateParameter.getStartDateParameter(page),
+                dateParameter.getEndDateParameter(page),
+            ).map { it.toPictureOfTheDay() }
         } catch (e: Exception) {
             Log.d("NasaPictureRepository", e.stackTraceToString())
             emptyList()

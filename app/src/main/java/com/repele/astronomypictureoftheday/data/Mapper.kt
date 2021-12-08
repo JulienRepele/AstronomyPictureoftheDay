@@ -6,5 +6,5 @@ fun NasaPicture.toPictureOfTheDay() = PictureOfTheDay(
     explanation = explanation,
     contentUrl = hdurl ?: url,
     thumbnailUrl = url ?: thumbnailUrl,
-    mediaType = mediaType?.let { MediaType.valueOf(it) }
+    mediaType = MediaType.find(mediaType)
 )

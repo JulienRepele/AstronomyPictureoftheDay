@@ -10,5 +10,10 @@ class PictureOfTheDay(
 )
 
 enum class MediaType(val tag: String) {
-    IMAGE("image"), VIDEO("video")
+    IMAGE("image"),
+    VIDEO("video");
+
+    companion object {
+        fun find(tag: String?): MediaType? = values().find { it.tag == tag }
+    }
 }
