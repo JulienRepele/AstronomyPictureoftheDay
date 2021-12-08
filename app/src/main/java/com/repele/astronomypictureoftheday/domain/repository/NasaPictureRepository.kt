@@ -4,7 +4,7 @@ import com.repele.astronomypictureoftheday.data.PictureOfTheDay
 
 interface NasaPictureRepository {
 
-    suspend fun getPictureList(limit: Int, offset: Int): List<PictureOfTheDay>
+    suspend fun getPictureList(page: Int = 0): List<PictureOfTheDay>
 
     fun getPicture(id: String): PictureOfTheDay?
 }
