@@ -11,13 +11,18 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.repele.astronomypictureoftheday.data.MediaType
 import com.repele.astronomypictureoftheday.data.PictureOfTheDay
 import com.repele.astronomypictureoftheday.presentation.PituresViewModel
 
 @Composable
-fun ScreenPictureOfTheDay(navController: NavController, pituresViewModel: PituresViewModel, contentPading: PaddingValues) {
+fun ScreenPictureOfTheDay(
+    navController: NavController,
+    pituresViewModel: PituresViewModel = hiltViewModel(),
+    contentPading: PaddingValues,
+) {
 
     val pictures = pituresViewModel.pictures.collectAsState().value
 
@@ -45,7 +50,7 @@ fun PictureOfTheDayGrid(
         items(elements) { element ->
             GridElement(
                 elementTag = element.date,
-                imageUrl = element.contentUrl,
+                imageUrl = element.thumbnailUrl,
                 modifier = Modifier.padding(4.dp),
                 title = element.title,
                 onElementClicked = onItemClicked
@@ -71,8 +76,7 @@ private val mockElements = listOf(
         title = "At the Shadow's Edge",
         explanation = "explanation",
         contentUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-1024.jpg",
-        hdImageUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-small.jpg",
-        thumbnailUrl = null,
+        thumbnailUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-small.jpg",
     ),
     PictureOfTheDay(
         date = "2021-11-25",
@@ -80,8 +84,7 @@ private val mockElements = listOf(
         title = "At the Shadow's Edge",
         explanation = "explanation",
         contentUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-1024.jpg",
-        hdImageUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-small.jpg",
-        thumbnailUrl = null,
+        thumbnailUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-small.jpg",
     ),
     PictureOfTheDay(
         date = "2021-11-25",
@@ -89,8 +92,7 @@ private val mockElements = listOf(
         title = "At the Shadow's Edge",
         explanation = "explanation",
         contentUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-1024.jpg",
-        hdImageUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-small.jpg",
-        thumbnailUrl = null,
+        thumbnailUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-small.jpg",
     ),
     PictureOfTheDay(
         date = "2021-11-25",
@@ -98,8 +100,7 @@ private val mockElements = listOf(
         title = "At the Shadow's Edge",
         explanation = "explanation",
         contentUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-1024.jpg",
-        hdImageUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-small.jpg",
-        thumbnailUrl = null,
+        thumbnailUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-small.jpg",
     ),
     PictureOfTheDay(
         date = "2021-11-25",
@@ -107,7 +108,6 @@ private val mockElements = listOf(
         title = "At the Shadow's Edge",
         explanation = "explanation",
         contentUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-1024.jpg",
-        hdImageUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-small.jpg",
-        thumbnailUrl = null,
+        thumbnailUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-small.jpg",
     )
 )

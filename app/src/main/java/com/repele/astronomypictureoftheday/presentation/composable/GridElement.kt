@@ -21,7 +21,7 @@ import coil.compose.rememberImagePainter
 @Composable
 fun GridElement(
     elementTag: String,
-    imageUrl: String,
+    imageUrl: String?,
     title: String,
     modifier: Modifier = Modifier,
     onElementClicked: (String) -> Unit,
