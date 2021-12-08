@@ -24,7 +24,7 @@ object AppModule {
         .build()
         .create(NasaApi::class.java)
 
-    @ActivityRetainedScoped
+    @Singleton
     @Provides
     fun provideNasaPictureRepository(nasaApi: NasaApi): NasaPictureRepository = NasaPictureRepositoryImpl(nasaApi)
 }
