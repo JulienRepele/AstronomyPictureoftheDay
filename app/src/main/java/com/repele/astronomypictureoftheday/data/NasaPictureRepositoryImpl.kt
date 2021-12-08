@@ -13,9 +13,9 @@ class NasaPictureRepositoryImpl @Inject constructor(
 
     private val pictureList = emptyList<PictureOfTheDay>()
 
-    override suspend fun getPictureList(limit: Int, offset: Int): List<PictureOfTheDay> {
+    override suspend fun getPictureList(page: Int): List<PictureOfTheDay> {
         val response = try {
-            api.getPicturesList().map { it.toPictureOfTheDay() }
+            api.getPicturesList("", "").map { it.toPictureOfTheDay() }
         } catch (e: Exception) {
             Log.d("NasaPictureRepository", e.stackTraceToString())
             emptyList()
