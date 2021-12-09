@@ -2,6 +2,11 @@ package com.repele.astronomypictureoftheday.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.repele.astronomypictureoftheday.data.NasaPictureSource
 import com.repele.astronomypictureoftheday.data.PictureOfTheDay
 import com.repele.astronomypictureoftheday.domain.repository.NasaPictureRepository
 import com.repele.astronomypictureoftheday.domain.use_case.GetPageOfPictures
@@ -15,24 +20,8 @@ import kotlinx.coroutines.launch
 class PituresViewModel @Inject constructor(
     private val repository: NasaPictureRepository,
 ) : ViewModel() {
-    private var pageLoaded = -1
-    private val _pictures = MutableStateFlow<List<PictureOfTheDay>>(emptyList())
-    val pictures = _pictures.asStateFlow()
 
-    init {
-        loadNextPage()
-    }
-
-    private fun loadNextPage() {
-        viewModelScope.launch {
-            val newPictures = GetPageOfPictures(repository).invoke(pageLoaded + 1)
-            if (newPictures.isNotEmpty()) {
-                val mergedList = mutableListOf<PictureOfTheDay>()
-                mergedList.addAll(pictures.value)
-                mergedList.addAll(newPictures)
-                _pictures.value = mergedList
-                pageLoaded++
-            }
-        }
-    }
+    val pictures = Pager(PagingConfig(pageSize = 10)) {
+        NasaPictureSource(repository)
+    }.flow.cachedIn(viewModelScope)
 }
