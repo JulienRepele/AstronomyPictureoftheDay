@@ -1,4 +1,4 @@
-package com.repele.astronomypictureoftheday.data
+package com.repele.astronomypictureoftheday.data.source
 
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -1,16 +1,15 @@
-package com.repele.astronomypictureoftheday.di;
+package com.repele.astronomypictureoftheday.di
 
-import com.repele.astronomypictureoftheday.data.NasaApi
-import com.repele.astronomypictureoftheday.data.NasaPictureRepositoryImpl
+import com.repele.astronomypictureoftheday.data.repository.NasaPictureRepositoryImpl
+import com.repele.astronomypictureoftheday.data.source.NasaApi
 import com.repele.astronomypictureoftheday.domain.repository.NasaPictureRepository
-import dagger.Module;
-import dagger.Provides;
-import dagger.hilt.InstallIn;
-import dagger.hilt.android.scopes.ActivityRetainedScoped
-import dagger.hilt.components.SingletonComponent;
-import javax.inject.Singleton
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)

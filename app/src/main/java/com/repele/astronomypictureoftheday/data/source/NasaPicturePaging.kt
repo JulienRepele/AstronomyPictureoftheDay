@@ -1,11 +1,12 @@
-package com.repele.astronomypictureoftheday.data
+package com.repele.astronomypictureoftheday.data.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.repele.astronomypictureoftheday.data.PictureOfTheDay
 import com.repele.astronomypictureoftheday.domain.repository.NasaPictureRepository
 import java.lang.Exception
 
-class NasaPictureSource(
+class NasaPicturePaging(
     private val pictureRepository: NasaPictureRepository,
 ) : PagingSource<Int, PictureOfTheDay>() {
 

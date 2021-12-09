@@ -1,5 +1,9 @@
-package com.repele.astronomypictureoftheday.data
+package com.repele.astronomypictureoftheday.data.repository
 
+import com.repele.astronomypictureoftheday.data.PictureOfTheDay
+import com.repele.astronomypictureoftheday.data.source.DateParameter
+import com.repele.astronomypictureoftheday.data.source.NasaApi
+import com.repele.astronomypictureoftheday.data.source.toPictureOfTheDay
 import com.repele.astronomypictureoftheday.domain.repository.NasaPictureRepository
 import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
@@ -16,7 +20,6 @@ class NasaPictureRepositoryImpl @Inject constructor(
         dateParameter.getStartDateParameter(page),
         dateParameter.getEndDateParameter(page),
     ).map { it.toPictureOfTheDay() }
-
 
     override fun getPicture(id: String): PictureOfTheDay? = pictureList.firstOrNull { it.date == id }
 }

@@ -1,8 +1,9 @@
 package com.repele.astronomypictureoftheday.data
 
-import java.util.*
-import org.junit.Assert.*
+import com.repele.astronomypictureoftheday.data.source.DateParameter
+import org.junit.Assert.assertEquals
 import org.junit.Test
+import java.util.Date
 
 class DateParameterTest {
 

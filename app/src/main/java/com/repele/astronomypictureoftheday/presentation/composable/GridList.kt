@@ -5,17 +5,14 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.repele.astronomypictureoftheday.data.MediaType
 import com.repele.astronomypictureoftheday.data.PictureOfTheDay
 import com.repele.astronomypictureoftheday.presentation.PituresViewModel
 
@@ -35,7 +32,6 @@ fun ScreenPictureOfTheDay(
     )
 }
 
-
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PictureOfTheDayGrid(
@@ -47,7 +43,7 @@ fun PictureOfTheDayGrid(
 
     LazyVerticalGrid(
         cells = GridCells.Fixed(2),
-        contentPadding = contentPading, //PaddingValues(4.dp),
+        contentPadding = contentPading,
         modifier = modifier,
     ) {
         items(elements.itemCount) { index ->
@@ -71,56 +67,3 @@ fun PictureOfTheDayGrid(
         }
     }
 }
-
-//@Preview(showSystemUi = true)
-//@Composable
-//fun PictureOfTheDayGridPreview() {
-//    mockElements
-//    PictureOfTheDayGrid(
-//        elements = mockElements,
-//        contentPading = PaddingValues(4.dp)
-//    ) {}
-//}
-//
-//private val mockElements = listOf(
-//    PictureOfTheDay(
-//        date = "2021-11-25",
-//        mediaType = MediaType.IMAGE,
-//        title = "At the Shadow's Edge",
-//        explanation = "explanation",
-//        contentUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-1024.jpg",
-//        thumbnailUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-small.jpg",
-//    ),
-//    PictureOfTheDay(
-//        date = "2021-11-25",
-//        mediaType = MediaType.IMAGE,
-//        title = "At the Shadow's Edge",
-//        explanation = "explanation",
-//        contentUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-1024.jpg",
-//        thumbnailUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-small.jpg",
-//    ),
-//    PictureOfTheDay(
-//        date = "2021-11-25",
-//        mediaType = MediaType.IMAGE,
-//        title = "At the Shadow's Edge",
-//        explanation = "explanation",
-//        contentUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-1024.jpg",
-//        thumbnailUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-small.jpg",
-//    ),
-//    PictureOfTheDay(
-//        date = "2021-11-25",
-//        mediaType = MediaType.IMAGE,
-//        title = "At the Shadow's Edge",
-//        explanation = "explanation",
-//        contentUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-1024.jpg",
-//        thumbnailUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-small.jpg",
-//    ),
-//    PictureOfTheDay(
-//        date = "2021-11-25",
-//        mediaType = MediaType.IMAGE,
-//        title = "At the Shadow's Edge",
-//        explanation = "explanation",
-//        contentUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-1024.jpg",
-//        thumbnailUrl = "https://apod.nasa.gov/apod/image/2111/Gout_EclipseCollage-small.jpg",
-//    )
-//)

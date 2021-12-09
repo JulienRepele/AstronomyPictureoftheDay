@@ -1,4 +1,4 @@
-package com.repele.astronomypictureoftheday.data
+package com.repele.astronomypictureoftheday.data.source
 
 import android.annotation.SuppressLint
 import java.text.SimpleDateFormat

@@ -1,4 +1,4 @@
-package com.repele.astronomypictureoftheday.data
+package com.repele.astronomypictureoftheday.data.source
 
 import com.google.gson.annotations.SerializedName
 
