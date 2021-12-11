@@ -10,4 +10,5 @@ class NasaPicture(
     @SerializedName("media_type") val mediaType: String?,
     @SerializedName("url") val url: String?,
     @SerializedName("thumbnail_url") val thumbnailUrl: String?,
+    @SerializedName("copyright") val copyright: String?,
 )

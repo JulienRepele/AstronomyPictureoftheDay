@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -18,16 +17,16 @@ import com.repele.astronomypictureoftheday.presentation.PituresViewModel
 
 @Composable
 fun ScreenPictureOfTheDay(
-    navController: NavController,
     pituresViewModel: PituresViewModel = hiltViewModel(),
     contentPading: PaddingValues,
+    navigateToDetails: (String) -> Unit
 ) {
 
     val lazyElements: LazyPagingItems<PictureOfTheDay> = pituresViewModel.pictures.collectAsLazyPagingItems()
 
     PictureOfTheDayGrid(
         elements = lazyElements,
-        onItemClicked = { navController.navigate("picture_details") },
+        onItemClicked = navigateToDetails,
         contentPading = contentPading,
     )
 }

@@ -1,8 +1,6 @@
 package com.repele.astronomypictureoftheday.presentation.composable
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.gestures.Orientation.Vertical
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,10 +8,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,7 +23,29 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberImagePainter
+import com.repele.astronomypictureoftheday.presentation.PictureDetailViewModel
+
+@Composable
+fun ScreenPictureDetails(
+    pictureViewModel: PictureDetailViewModel = hiltViewModel(),
+    pictureID: String,
+) {
+    val picture by pictureViewModel.pictureDetails.collectAsState(initial = null)
+    remember {
+        pictureViewModel.loadPicture(pictureID)
+        true
+    }
+
+    PictureDetails(
+        title = picture?.title ?: "",
+        date = picture?.date ?: "",
+        imageUrl = picture?.contentUrl ?: "",
+        explanation = picture?.explanation ?: "",
+        copyright = picture?.copyright
+    )
+}
 
 @Composable
 fun PictureDetails(
@@ -33,10 +57,9 @@ fun PictureDetails(
     copyright: String? = null,
 ) {
     Column(
-        modifier = modifier.scrollable(
-            state = rememberScrollState(),
-            orientation = Vertical,
-        )
+        modifier = modifier
+            .verticalScroll(rememberScrollState())
+            .padding(0.dp, 0.dp, 0.dp, 16.dp),
     ) {
         Box(
             modifier = Modifier
@@ -55,7 +78,7 @@ fun PictureDetails(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(300.dp),
-                contentScale = ContentScale.Fit,
+                contentScale = ContentScale.Crop,
             )
             copyright?.let {
                 Chips(
@@ -69,14 +92,14 @@ fun PictureDetails(
         Text(
             text = title,
             modifier = Modifier.padding(16.dp),
-            style = MaterialTheme.typography.h4,
-            textAlign = TextAlign.Justify,
+            style = MaterialTheme.typography.h5,
         )
         explanation?.let {
             Text(
                 text = it,
-                modifier = Modifier.padding(16.dp, 0.dp, 16.dp, 16.dp),
+                modifier = Modifier.padding(16.dp, 0.dp, 16.dp, 0.dp),
                 style = MaterialTheme.typography.body2,
+                textAlign = TextAlign.Justify,
             )
         }
     }
@@ -97,6 +120,7 @@ fun Chips(
             text = text,
             modifier = Modifier.padding(8.dp, 4.dp),
             style = MaterialTheme.typography.body2,
+            color = MaterialTheme.colors.onSurface,
         )
     }
 }

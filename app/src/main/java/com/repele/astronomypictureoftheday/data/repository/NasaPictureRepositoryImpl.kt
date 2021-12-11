@@ -13,13 +13,13 @@ class NasaPictureRepositoryImpl @Inject constructor(
     private val api: NasaApi,
 ) : NasaPictureRepository {
 
-    private val pictureList = emptyList<PictureOfTheDay>()
+    private val pictureList = emptyList<PictureOfTheDay>().toMutableList()
     private val dateParameter = DateParameter()
 
     override suspend fun getPictureList(page: Int): List<PictureOfTheDay> = api.getPicturesList(
         dateParameter.getStartDateParameter(page),
         dateParameter.getEndDateParameter(page),
-    ).map { it.toPictureOfTheDay() }
+    ).map { it.toPictureOfTheDay() }.also { pictureList.addAll(it) }
 
     override fun getPicture(id: String): PictureOfTheDay? = pictureList.firstOrNull { it.date == id }
 }

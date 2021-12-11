@@ -6,6 +6,7 @@ class PictureOfTheDay(
     val explanation: String,
     val contentUrl: String?, // Could be a link to an image or a video, depending on the mediaType
     val thumbnailUrl: String?,
+    val copyright: String?,
     val mediaType: MediaType?,
 )
 
