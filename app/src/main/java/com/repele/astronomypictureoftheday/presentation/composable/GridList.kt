@@ -1,7 +1,6 @@
 package com.repele.astronomypictureoftheday.presentation.composable
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
@@ -18,8 +17,7 @@ import com.repele.astronomypictureoftheday.presentation.PituresViewModel
 @Composable
 fun ScreenPictureOfTheDay(
     pituresViewModel: PituresViewModel = hiltViewModel(),
-    contentPading: PaddingValues,
-    navigateToDetails: (String) -> Unit
+    navigateToDetails: (String) -> Unit,
 ) {
 
     val lazyElements: LazyPagingItems<PictureOfTheDay> = pituresViewModel.pictures.collectAsLazyPagingItems()
@@ -27,7 +25,6 @@ fun ScreenPictureOfTheDay(
     PictureOfTheDayGrid(
         elements = lazyElements,
         onItemClicked = navigateToDetails,
-        contentPading = contentPading,
     )
 }
 
@@ -36,13 +33,11 @@ fun ScreenPictureOfTheDay(
 fun PictureOfTheDayGrid(
     elements: LazyPagingItems<PictureOfTheDay>,
     modifier: Modifier = Modifier,
-    contentPading: PaddingValues,
     onItemClicked: (String) -> Unit,
 ) {
 
     LazyVerticalGrid(
         cells = GridCells.Fixed(2),
-        contentPadding = contentPading,
         modifier = modifier,
     ) {
         items(elements.itemCount) { index ->

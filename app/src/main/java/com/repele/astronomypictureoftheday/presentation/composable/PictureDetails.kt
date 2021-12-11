@@ -9,9 +9,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -92,14 +93,16 @@ fun PictureDetails(
         Text(
             text = title,
             modifier = Modifier.padding(16.dp),
-            style = MaterialTheme.typography.h5,
+            style = MaterialTheme.typography.headlineMedium,
+            color = MaterialTheme.colorScheme.onSurface,
         )
         explanation?.let {
             Text(
                 text = it,
                 modifier = Modifier.padding(16.dp, 0.dp, 16.dp, 0.dp),
-                style = MaterialTheme.typography.body2,
+                style = MaterialTheme.typography.bodySmall,
                 textAlign = TextAlign.Justify,
+                color = MaterialTheme.colorScheme.onSurface,
             )
         }
     }
@@ -114,13 +117,15 @@ fun Chips(
     Surface(
         modifier = modifier,
         shape = RoundedCornerShape(percent = 50),
-        color = color ?: MaterialTheme.colors.primaryVariant
+        color = color ?: MaterialTheme.colorScheme.surface
     ) {
         Text(
             text = text,
             modifier = Modifier.padding(8.dp, 4.dp),
-            style = MaterialTheme.typography.body2,
-            color = MaterialTheme.colors.onSurface,
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onSurface,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
         )
     }
 }

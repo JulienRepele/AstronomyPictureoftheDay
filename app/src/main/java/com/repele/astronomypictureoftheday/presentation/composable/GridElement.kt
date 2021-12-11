@@ -2,15 +2,18 @@ package com.repele.astronomypictureoftheday.presentation.composable
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
@@ -26,11 +29,17 @@ fun GridElement(
     modifier: Modifier = Modifier,
     onElementClicked: (String) -> Unit,
 ) {
-    Card(
+
+    Surface(
         modifier = modifier
             .fillMaxWidth()
-            .clickable { onElementClicked(elementTag) },
-        elevation = 4.dp
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = rememberRipple(bounded = false),
+                onClick = { onElementClicked(elementTag) }
+            ),
+        shape = RoundedCornerShape(4.dp),
+        color = MaterialTheme.colorScheme.primaryContainer
     ) {
         Column {
             Image(
@@ -50,9 +59,10 @@ fun GridElement(
             Text(
                 text = title,
                 modifier = Modifier.padding(16.dp),
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodySmall,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
             )
         }
     }
@@ -62,7 +72,7 @@ fun GridElement(
 fun Placeholder(modifier: Modifier = Modifier) {
     Surface(
         modifier = modifier,
-        color = MaterialTheme.colors.onSurface
+        color = MaterialTheme.colorScheme.onSurface
     ) {}
 }
 
