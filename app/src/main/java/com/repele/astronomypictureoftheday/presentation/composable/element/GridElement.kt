@@ -1,4 +1,4 @@
-package com.repele.astronomypictureoftheday.presentation.composable
+package com.repele.astronomypictureoftheday.presentation.composable.element
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

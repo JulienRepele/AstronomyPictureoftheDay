@@ -8,8 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.repele.astronomypictureoftheday.presentation.composable.ScreenPictureDetails
-import com.repele.astronomypictureoftheday.presentation.composable.ScreenPictureOfTheDay
+import com.repele.astronomypictureoftheday.presentation.composable.screen.ScreenPictureDetails
+import com.repele.astronomypictureoftheday.presentation.composable.screen.ScreenPictureOfTheDay
 import com.repele.astronomypictureoftheday.presentation.theme.AstronomyPictureOfTheDayTheme
 import dagger.hilt.android.AndroidEntryPoint
 

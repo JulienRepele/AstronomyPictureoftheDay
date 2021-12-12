@@ -22,7 +22,7 @@ class GetPageOfPicture @Inject constructor(
                 nextKey = pageIndex + 1
             )
         } catch (e: Exception) {
-            LoadResult.Error(e)
+            return LoadResult.Error(e)
         }
     }
 
