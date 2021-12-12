@@ -24,7 +24,7 @@ fun LoadingChips(
     Surface(
         modifier = modifier,
         shape = RoundedCornerShape(percent = 50),
-        color = MaterialTheme.colorScheme.tertiaryContainer
+        color = MaterialTheme.colorScheme.tertiary,
     ) {
         Row {
             Text(
@@ -33,7 +33,7 @@ fun LoadingChips(
                     .padding(16.dp, 4.dp, 8.dp, 4.dp)
                     .align(Alignment.CenterVertically),
                 style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onTertiaryContainer,
+                color = MaterialTheme.colorScheme.onTertiary,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
@@ -43,7 +43,7 @@ fun LoadingChips(
                     .padding(8.dp, 4.dp)
                     .scale(0.75f)
                     .align(Alignment.CenterVertically),
-                color = MaterialTheme.colorScheme.onTertiaryContainer,
+                color = MaterialTheme.colorScheme.onTertiary,
             )
         }
     }
@@ -58,13 +58,13 @@ fun Chips(
     Surface(
         modifier = modifier,
         shape = RoundedCornerShape(percent = 50),
-        color = color ?: MaterialTheme.colorScheme.surface
+        color = color ?: MaterialTheme.colorScheme.tertiaryContainer,
     ) {
         Text(
             text = text,
             modifier = Modifier.padding(8.dp, 4.dp),
             style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onSurface,
+            color = MaterialTheme.colorScheme.onTertiaryContainer,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
         )

@@ -39,7 +39,7 @@ fun GridElement(
                 onClick = { onElementClicked(elementTag) }
             ),
         shape = RoundedCornerShape(4.dp),
-        color = MaterialTheme.colorScheme.primaryContainer
+        color = MaterialTheme.colorScheme.tertiaryContainer,
     ) {
         Column {
             Image(
@@ -62,7 +62,7 @@ fun GridElement(
                 style = MaterialTheme.typography.bodySmall,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
-                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                color = MaterialTheme.colorScheme.onTertiaryContainer,
             )
         }
     }
