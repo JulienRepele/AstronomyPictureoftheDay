@@ -42,19 +42,11 @@ fun GridElement(
         color = MaterialTheme.colorScheme.tertiaryContainer,
     ) {
         Column {
-            Image(
-                painter = rememberImagePainter(
-                    data = imageUrl,
-                    builder = {
-                        crossfade(true)
-                        Placeholder()
-                    }
-                ),
-                contentDescription = null,
+            LoadingImage(
+                imageUrl = imageUrl,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(128.dp),
-                contentScale = ContentScale.Crop,
             )
             Text(
                 text = title,
