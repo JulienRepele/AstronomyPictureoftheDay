@@ -5,7 +5,7 @@ Currently testing Hilt, material3, Jetpack Compose and Paging for Compose.
 
 Tested on a Pixel 4a with Android 12.
 
-![Preview of the app](https://github.com/JulienRepele/AstronomyPictureoftheDay/blob/master/preview.jpg)
+![Preview of the app](https://github.com/JulienRepele/AstronomyPictureoftheDay/blob/6349e331a8408542b80ef386a3b5f23b36b31bd3/preview.png)
 
 
 This is just a pet project to try new things.
