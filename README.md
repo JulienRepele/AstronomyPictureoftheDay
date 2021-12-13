@@ -3,7 +3,13 @@ An app that simply displays the photos served by the [*Astronomy Picture of the 
 
 Currently testing Hilt, material3, Jetpack Compose and Paging for Compose.
 
-```
-This is just a pet project to try new things. You can expect breaking changes, unused code and various code smells.
+Tested on a Pixel 4a with Android 12.
+
+![Preview of the app](https://github.com/JulienRepele/AstronomyPictureoftheDay/blob/master/preview.jpg)
+
+
+This is just a pet project to try new things.
+You can expect breaking changes, unused code and various code smells.
 **Use it at your own risk!**
-```
+
+Feel free to send me your questions, suggestions and comments.
