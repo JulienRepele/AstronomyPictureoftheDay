@@ -107,6 +107,12 @@ fun PictureOfTheDayGrid(
                 loadState.append is LoadState.Loading -> {
                     onLoading()
                 }
+                loadState.prepend is LoadState.Loading -> {
+                    onLoading()
+                }
+                loadState.refresh is LoadState.Loading -> {
+                    onLoading()
+                }
 
                 loadState.refresh is LoadState.NotLoading -> {
                     onNotLoading()
