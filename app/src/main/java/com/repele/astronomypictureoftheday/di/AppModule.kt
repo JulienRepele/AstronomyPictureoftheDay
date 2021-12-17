@@ -8,16 +8,18 @@ import com.repele.astronomypictureoftheday.domain.use_case.GetPictureDetails
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityRetainedComponent
+import dagger.hilt.android.scopes.ActivityRetainedScoped
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ActivityRetainedComponent::class)
 object AppModule {
 
-    @Singleton
+    @ActivityRetainedScoped
     @Provides
     fun provideNasaApi(): NasaApi = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
@@ -25,15 +27,15 @@ object AppModule {
         .build()
         .create(NasaApi::class.java)
 
-    @Singleton
+    @ActivityRetainedScoped
     @Provides
     fun provideNasaPictureRepository(nasaApi: NasaApi): NasaPictureRepository = NasaPictureRepositoryImpl(nasaApi)
 
-    @Singleton
+    @ActivityRetainedScoped
     @Provides
     fun providesGetPageOfPictures(pictureRepository: NasaPictureRepository) = GetPageOfPicture(pictureRepository)
 
-    @Singleton
+    @ActivityRetainedScoped
     @Provides
     fun providesGetPictureDetails(pictureRepository: NasaPictureRepository) = GetPictureDetails(pictureRepository)
 }
