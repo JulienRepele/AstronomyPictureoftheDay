@@ -23,7 +23,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.annotation.ExperimentalCoilApi
 import com.repele.astronomypictureoftheday.presentation.PictureDetailViewModel
 import com.repele.astronomypictureoftheday.presentation.composable.element.Chips
-import com.repele.astronomypictureoftheday.presentation.composable.element.LoadingImage
+import com.repele.astronomypictureoftheday.presentation.composable.element.LoadableImage
 
 @Composable
 fun ScreenPictureDetails(
@@ -67,7 +67,7 @@ fun PictureDetails(
                 .height(300.dp),
         ) {
 
-            LoadingImage(
+            LoadableImage(
                 imageUrl = imageUrl,
             )
             copyright?.let {
