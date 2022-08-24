@@ -10,29 +10,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import coil.compose.AsyncImagePainter
-import coil.compose.rememberImagePainter
+import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
 
 @Composable
-fun LoadingImage(
+fun LoadableImage(
     imageUrl: String?,
     modifier: Modifier = Modifier,
 ) {
     Box(
         modifier = modifier,
     ) {
-        val painter = rememberImagePainter(
-            data = imageUrl,
-            builder = {
-                crossfade(true)
-                Placeholder()
-            }
-        )
+        val painter = rememberAsyncImagePainter(ImageRequest.Builder(LocalContext.current).data(data = imageUrl).build())
         Image(
             painter = painter,
             contentDescription = null,
-            modifier = Modifier
-                .fillMaxSize(),
+            modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop,
         )
         when (painter.state) {
@@ -42,14 +37,14 @@ fun LoadingImage(
                     color = MaterialTheme.colorScheme.onSurface,
                 )
             }
-            is AsyncImagePainter.State.Empty -> {}
-            else -> {
+            is AsyncImagePainter.State.Error -> {
                 Text(
                     text = "An error has occurred",
                     color = MaterialTheme.colorScheme.error,
                     modifier = Modifier.align(Alignment.Center),
                 )
             }
+           else -> {}
         }
     }
 }
