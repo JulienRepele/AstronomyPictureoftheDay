@@ -8,9 +8,10 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInVertically
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -38,13 +39,13 @@ import kotlinx.coroutines.flow.flowOf
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun ScreenPictureOfTheDay(
-    pituresViewModel: PituresViewModel = hiltViewModel(),
+    picturesViewModel: PituresViewModel = hiltViewModel(),
     navigateToDetails: (String) -> Unit,
 ) {
 
-    val lazyElements: LazyPagingItems<PictureOfTheDay> = pituresViewModel.pictures.collectAsLazyPagingItems()
-    val displayLoading by pituresViewModel.loading.collectAsState()
-    val displayError by pituresViewModel.error.collectAsState(initial = false)
+    val lazyElements: LazyPagingItems<PictureOfTheDay> = picturesViewModel.pictures.collectAsLazyPagingItems()
+    val displayLoading by picturesViewModel.loading.collectAsState()
+    val displayError by picturesViewModel.error.collectAsState(initial = false)
 
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -53,9 +54,9 @@ fun ScreenPictureOfTheDay(
             elements = lazyElements,
             modifier = Modifier.fillMaxSize(),
             onItemClicked = navigateToDetails,
-            onNotLoading = { pituresViewModel.onNotLoading() },
-            onLoading = { pituresViewModel.onLoading() },
-            onError = { pituresViewModel.onError() }
+            onNotLoading = { picturesViewModel.onNotLoading() },
+            onLoading = { picturesViewModel.onLoading() },
+            onError = { picturesViewModel.onError() }
         )
 
         AppearAnimation(
@@ -76,7 +77,6 @@ fun ScreenPictureOfTheDay(
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PictureOfTheDayGrid(
     elements: LazyPagingItems<PictureOfTheDay>,
@@ -88,6 +88,9 @@ fun PictureOfTheDayGrid(
 ) {
     LazyVerticalGrid(
         GridCells.Fixed(2),
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier.background(MaterialTheme.colorScheme.background),
     ) {
         items(elements.itemCount) { index ->
